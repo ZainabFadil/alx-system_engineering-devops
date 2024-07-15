@@ -1,0 +1,43 @@
+This is an age-old question amongst internet users, and an often-used interview question, which I’ll be answering (or at least attempting to answer) in this blog post.
+
+In this age and time, the internet has been integrated into the lifestyles of the average human and the world is getting even more advanced. We watch videos, read news, access educative materials, and do all sorts on the internet. Google literally has the answer to every daily question, and you can access all that knowledge simply by typing google.com (or any other domain name, e.g. facebook.com) in your browser and hitting `enter`.
+
+This is a simple, yet thorough process involving your browser, your computer’s Operating System, the Internet Service Provider (ISP), the server to the host site, as well as the services running on the server.
+
+When you type in a URL requesting a webpage, you are indirectly communicating with the servers holding the web page; and how do you reach out to these servers? -via their IP address. This brings us to our first set of mini questions:
+
+What is a server?
+
+A server is a computer or computer program which manages access to a centralized resource or service in a network. You can think of a server as a special computer without a keyboard, mouse or screen and is accessible only by a network. A server can be physical or virtual and it runs on an Operating System (OS). A web server more specifically however, is a software that delivers web pages (not necessarily an actual computer). I hope you get the idea. Moving on…
+
+What is an IP Address?
+
+IP address is a unique string of characters that identifies each computer using the Internet protocol to communicate over a network. I like to think of it as the house address of every device. It’s basically how your computer knows where to get the answers to your questions from. Every device on the internet has one, including yours and they are generally written in numbers with the format ‘xxx.xxx.xxx.xxx’, where each ‘xxx’ is a number from 0 to 255 (e.g 209.85.227.104 is Google’s IP address). So back to our discussion:
+
+Now that we know that your computer needs the address (IP address) of the server holding the web page (host server) you are asking for, then the next question is “How will my computer get the IP address of this website I am trying to visit?”. Hmmm, this brings us to the next phase of this journey…
+
+DNS LOOKUP
+
+What is DNS?
+
+Domain Name System (DNS) is, in simple words, the technology that translates human-adapted, text-based domain names to machine-adapted, numerical-based IP. When you wish to visit google.com, you ought to type in the address as http://209.85.227.104 before you can have access to google, but because of this amazing thing called DNS, you don’t have to memorize dozens of IP addresses you visit frequently. You can compare DNS and caching (cache-ing) to the contacts app on your device. If you need to call your friends, you don’t have to know all of their phone numbers by heart because the app takes care of that; you simply have to know the name of the person you wish to call, as it is saved in the contacts app. Similarly, DNS acts as a bridge between the text-based domain name which you can easily remember (e.g google, medium, Facebook) and the number-based IP address and it allows you to visit these IP addresses without even having to know them. Cool right?
+
+Back to the topic of discussion, after you have typed the URL you wish to visit into your browser, your browser gets to work right away. It quickly checks its own cache for a record of this IP address, using the domain you have provided, to know if you have once visited this website (the IP address to every website you visited in saved in your browser’s cache for quicker access the next time you need it). If it finds the IP there, great! The IP is returned but if it doesn’t, the search goes further. Because DNS is complex and has to be blazingly fast, DNS data is cached at different layers between your browser and at various places across the internet.
+
+Caches are essential for regulating network traffic and improving data transfer times. After checking its own cache, your browser then checks three other locations for the IP address, making a total of four potential locations:
+
+1. Browser cache: As we’ve already established, your browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
+
+2. Operating System (OS) cache: Your OS also maintains a cache of DNS records. In case you may have visited the site previously using another browser on the same device or you may have cleared your browser caches at some point, losing the required DNS data on the browser, the browser makes a system call to your underlying computer OS to fetch those records for the required IP address.
+
+3. Router cache: If the required DNS record is not found on the OS, this implies that it is not on your computer at all. The computer then communicates with the router which of course maintains its own cache of DNS records as well.
+
+Hold on, what is a Router?
+
+A router is a device that connects two or more packet switched networks or subnetworks. It serves two primary functions: managing traffic between these networks by forwarding data packets to their intended IP addresses, and allowing multiple devices to use the same internet connection.
+
+4. ISP cache: If all the previous steps fail, the browser then moves on to the Internet Service Provider (ISP). Your ISP maintains its own DNS server, which includes a cache of DNS records, which the browser would check with the last hope of finding your requested URL’s (IP) address.
+
+This entire process is called a DNS lookup. You could visualize the DNS lookup architecture as an If … elif … else statement that goes thus: ‘if the IP is found in the browser cache, return; but if not, move to the elif (else if) statement. Else if it is found in the next potential location, great! Return the IP; but if not, move to the next ‘elif’ statement. This is done until all these potential locations within all the ‘elif’ statements have been checked. The process then proceeds to the ‘else’ code block which means that “The IP address for this domain doesn’t exist”’.
+
+There’s SO MUCH more to the DNS architecture than this! There are a lot of sub-processes and a lot more in the DNS hierarchy. Things also get more interesting when subdomains and paths are introduced into the mix (e.g calendar.google.com/events), but for the purpose of this article this is all we need. Visit https://howdns.works or https://dnsimple.com for more info on DNS.
